@@ -13,19 +13,28 @@ class ContestHandler():
 			self.temp_dict = {}
 			self.temp_dict["Name"] = self.sheet.cell_value(i,0)
 			self.temp_dict["Email"] = self.sheet.cell_value(i,1)
-			self.temp_dict["Problems"]
+			self.temp_dict["Problems Solved"] = ((int(self.sheet.cell_value(i,11))//4) + (int(self.sheet.cell_value(i,12))//4))
+			self.temp_dict["Tab Switches"] = self.sheet.cell_value(i,7)
+			username = self.sheet.cell_value(i,9).split('@')
+			self.user[username[1].lower()] = self.temp_dict
 
 
 	def getData(self, username = None):
-		pass
-		# return tuple(Username,Problems Solved,Tab Switch Count)
+		try:
+			return self.user[username]
+		except:
+			self.empty = {}
+			return self.empty
 
 	def getUsernameList(self):
-		pass
+		usernameList = []
+		for key,value in self.user.items():
+			usernameList.append(key)
+		return usernameList
 
 
-if __name__ == '__main__':
-	contestData = ContestHandler("./AlgorithmsP1-result-837a223.xlsx")
-	for i in range(contestData.sheet.ncols):
-		print(contestData.sheet.cell_value(0,i))
+# if __name__ == '__main__':
+# 	contestData = ContestHandler("./AlgorithmsP1-result-837a223.xlsx")
+# 	for key,value in contestData.user.items():
+# 		print(key, " : ", value)
 	
