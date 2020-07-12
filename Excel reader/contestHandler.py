@@ -8,4 +8,8 @@ class ContestHandler():
 
 
 	def getData(self, username = None):
+		pass
 		# return tuple(Username,Problems Solved,Tab Switch Count)
+
+	def getUsernameList(self):
+		pass
