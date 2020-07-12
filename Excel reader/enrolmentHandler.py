@@ -1,8 +1,8 @@
 import xlrd
 
 class EnrolmentHander():
-	def __init__(self):
-		self.enrolment = xlrd.open_workbook('./Algorithm_P1.xlsx')
+	def __init__(self,fileName):
+		self.enrolment = xlrd.open_workbook(fileName)
 		self.sheet = self.enrolment.sheet_by_index(0)
 		self.enrolment = {}
 		for i in range(1,self.sheet.nrows):
