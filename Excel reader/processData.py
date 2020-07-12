@@ -1,5 +1,4 @@
-# Each Batch will have seperate excel sheet 
-
+# Batch enrolments:
 # B1 1-32
 # B2 33-64
 # B3 65-96
@@ -32,20 +31,35 @@ class ProcessData():
 			userTabSwitches = userData["Tab Switches"]
 			userEnrolment = self.enrolmentObject.getEnrolment(user)
 			userBatch = self.getBatch(userEnrolment)
+			userPlagiarismStatus = self.plagObject.getStatus(user)
 
 			# Check user plagiarism status
-			if self.plagObject.getStatus(user) == True:
+			if userPlagiarismStatus == True:
 				score = 3
+				userPlagiarismStatus = 'Disqualified due to Plagiarism'
+				if userTabSwitches > 5:
+					userProblemSolved = 'Also disqualified due to Tab switches'
+
 			elif userTabSwitches > 5:
 				score = 3
+				userProblemSolved = 'Disqualified due to Tab switches'
+
 			elif userProblemSolved == 0:
 				score = 6
+				userPlagiarismStatus = '-'
+
 			elif userProblemSolved == 1: 
 				score = 7
+				userPlagiarismStatus = '-'
+
 			elif userProblemSolved == 2:
 				score = 8
+				userPlagiarismStatus = '-'
 
-			data = (userEnrolment, score)
+			# Make data in required format
+			data = (userEnrolment, score, userProblemSolved, userPlagiarismStatus)
+
+			# Store data
 			self.batchDict[userBatch].append(data)
 
 			
