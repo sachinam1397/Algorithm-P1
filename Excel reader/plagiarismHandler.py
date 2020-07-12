@@ -16,7 +16,7 @@ class PlagiarismHandler():
 
 	def getStatus(self, userName):
 		try:
-			return self.plagirisedData[userName]
+			return self.plagirisedData[userName.lower()]
 		except:
 			return False
 

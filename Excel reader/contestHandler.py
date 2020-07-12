@@ -20,11 +20,7 @@ class ContestHandler():
 
 
 	def getData(self, username = None):
-		try:
-			return self.user[username]
-		except:
-			self.empty = {}
-			return self.empty
+		return self.user[username.lower()]
 
 	def getUsernameList(self):
 		usernameList = []

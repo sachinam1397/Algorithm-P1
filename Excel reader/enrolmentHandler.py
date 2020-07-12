@@ -12,9 +12,9 @@ class EnrolmentHander():
 
 	def getEnrolment(self, userName = None):
 		try:
-			return self.enrolment[userName]
+			return self.enrolment[userName.lower()]
 		except:
-			return "000000"
+			return None
 
 
 # if __name__ == '__main__':
