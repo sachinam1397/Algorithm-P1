@@ -1,3 +1,6 @@
+"""
+This class reads the contest data and rprovides a getter for handler
+"""
 class ContestHandler():
 	def __init__(self, fileName):
 		pass

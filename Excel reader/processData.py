@@ -9,6 +9,10 @@
 # B7 178, 193-224
 # B8 226-263
 
-class HandleData():
-	def __init__(self):
+class ProcessData():
+	def __init__(self, plagObject, enrolmentObject, contestDataObject):
+		pass
+
+
+	def getBatchReport(self, batch = 'B1'):
 		pass
