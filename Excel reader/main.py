@@ -1,6 +1,6 @@
 from plagiarismHandler import PlagiarismHandler
 from enrolmentHandler import EnrolmentHandler
-from generalHandler import GeneralHandler
+from contestHandler import ContestHandler
 from processData import ProcessData
 from dataPostProcessHandler import PostProcessHandler
 
