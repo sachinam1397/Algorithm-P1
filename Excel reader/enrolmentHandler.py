@@ -1,6 +1,6 @@
 import xlrd
 
-class EnrolmentHander():
+class EnrolmentHandler():
 	def __init__(self,fileName):
 		self.enrolment = xlrd.open_workbook(fileName)
 		self.sheet = self.enrolment.sheet_by_index(0)
