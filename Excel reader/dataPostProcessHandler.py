@@ -2,7 +2,7 @@ from openpyxl import Workbook
 
 class PostProcessHandler():
 	def __init__(self, dataHandlerObject):
-		self.batchList = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8']
+		self.batchList = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'Unknown']
 		self.dataHandlerObject = dataHandlerObject
 
 		self.makeSheets()
@@ -16,6 +16,7 @@ class PostProcessHandler():
 			workbook = Workbook()
 			activeSheet = workbook.active
 			activeSheet.title = batch + ' Marks'
+			activeSheet.append(('Enrolment', 'Score', 'Problems Solved', 'Plagiarism Status'))
 
 			for user in batchData:
 				# user : (enrolment, score, problem solved, plag status)

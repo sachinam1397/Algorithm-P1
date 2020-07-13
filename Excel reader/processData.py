@@ -15,7 +15,7 @@ class ProcessData():
 		self.contestDataObject = contestDataObject
 
 		# This dict holds the batch data as list of tuples(enrolment, score)
-		self.batchDict = {'B1' : [], 'B2' : [], 'B3' : [], 'B4' : [], 'B5' : [], 'B6' : [], 'B7' : [], 'B8' : []}
+		self.batchDict = {'B1' : [], 'B2' : [], 'B3' : [], 'B4' : [], 'B5' : [], 'B6' : [], 'B7' : [], 'B8' : [], 'Unknown' : []}
 		# Get the list of user names from contest class
 		self.userList = self.contestDataObject.getUserNameList()		
 		# Make results
@@ -29,9 +29,15 @@ class ProcessData():
 			userData = self.contestDataObject.getData(user)	
 			userProblemSolved = userData["Problems Solved"]
 			userTabSwitches = userData["Tab Switches"]
-			userEnrolment = self.enrolmentObject.getEnrolment(user)
-			userBatch = self.getBatch(userEnrolment)
 			userPlagiarismStatus = self.plagObject.getStatus(user)
+
+			userEnrolment = self.enrolmentObject.getEnrolment(user)
+			if userEnrolment == None:
+				# Bad google form response
+				userEnrolment = 'Incorrect Form data filled.'
+				userBatch = 'Unknown'
+			else:
+				userBatch = self.getBatch(userEnrolment)
 
 			# Check user plagiarism status
 			if userPlagiarismStatus == True:
@@ -65,8 +71,11 @@ class ProcessData():
 			
 	def getBatch(self, enrolment):
 		# enrolment is in the form 181Bxxx, eDigit = xxx
-		if type(enrolment) == type(""):
-			eDigit = int(enrolment[5:])	# Remove 181B
+		try:
+			if type(enrolment) == type(""):
+				eDigit = int(enrolment[5:])	# Remove 181B
+		except:
+			return "Unknown"
 
 		if eDigit >= 1 and eDigit <= 32:
 			return 'B1'
