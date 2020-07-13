@@ -6,7 +6,7 @@ class EnrolmentHandler():
 		self.sheet = self.enrolment.sheet_by_index(0)
 		self.enrolment = {}
 		for i in range(1,self.sheet.nrows):
-			self.enrolment[self.sheet.cell_value(i,1)] = self.sheet.cell_value(i,2)
+			self.enrolment[self.sheet.cell_value(i,1)] = self.sheet.cell_value(i,2).lower()
 
 
 
