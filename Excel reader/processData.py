@@ -31,7 +31,9 @@ class ProcessData():
 			userTabSwitches = userData["Tab Switches"]
 			userPlagiarismStatus = self.plagObject.getStatus(user)
 
+
 			userEnrolment = self.enrolmentObject.getEnrolment(user)
+			# print(userEnrolment)
 			if userEnrolment == None:
 				# Bad google form response
 				userEnrolment = 'Incorrect Form data filled.'
@@ -73,7 +75,7 @@ class ProcessData():
 		# enrolment is in the form 181Bxxx, eDigit = xxx
 		try:
 			if type(enrolment) == type(""):
-				eDigit = int(enrolment[5:])	# Remove 181B
+				eDigit = int(enrolment[4:])	# Remove 181B
 		except:
 			return "Unknown"
 
