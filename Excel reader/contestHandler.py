@@ -22,7 +22,7 @@ class ContestHandler():
 	def getData(self, username = None):
 		return self.user[username.lower()]
 
-	def getUsernameList(self):
+	def getUserNameList(self):
 		usernameList = []
 		for key,value in self.user.items():
 			usernameList.append(key)
