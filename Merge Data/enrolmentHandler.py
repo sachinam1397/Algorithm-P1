@@ -7,9 +7,9 @@ class EnrolmentHandler():
 		self.enrolment = {}
 		for i in range(1,self.sheet.nrows):
 			try:
-				self.enrolment[self.sheet.cell_value(i,1)] = self.sheet.cell_value(i,2).lower()
+				self.enrolment[self.sheet.cell_value(i,3).split('@')[1]] = self.sheet.cell_value(i,2).lower()
 			except:
-				pass
+				self.enrolment[self.sheet.cell_value(i,1)] = self.sheet.cell_value(i,2).lower()
 
 
 
