@@ -15,7 +15,7 @@ class ProcessData():
 		self.contestDataObject = contestDataObject
 
 		# This dict holds the batch data as list of tuples(enrolment, score)
-		self.batchDict = {'B1' : [], 'B2' : [], 'B3' : [], 'B4' : [], 'B5' : [], 'B6' : [], 'B7' : [], 'B8' : [], 'Unknown' : []}
+		self.batchDict = {'B1-retest' : [], 'B2-retest' : [], 'B3-retest' : [], 'B4-retest' : [], 'B5-retest' : [], 'B6-retest' : [], 'B7-retest' : [], 'B8-retest' : [], 'Unknown-retest' : []}
 		# Get the list of user names from contest class
 		self.userList = self.contestDataObject.getUserNameList()		
 		# Make results
@@ -37,13 +37,13 @@ class ProcessData():
 			if userEnrolment == None:
 				# Bad google form response
 				userEnrolment = 'Incorrect Form data filled.'
-				userBatch = 'Unknown'
+				userBatch = 'Unknown-retest'
 			else:
 				userBatch = self.getBatch(userEnrolment)
 
 			# Check user plagiarism status
 			if userPlagiarismStatus == True:
-				score = 3
+				score = 2
 				userPlagiarismStatus = 'Disqualified due to Plagiarism'
 				if userTabSwitches > 5:
 					userProblemSolved = 'Also disqualified due to Tab switches'
@@ -53,15 +53,15 @@ class ProcessData():
 				userProblemSolved = 'Disqualified due to Tab switches'
 
 			elif userProblemSolved == 0:
-				score = 6
+				score = 4
 				userPlagiarismStatus = '-'
 
 			elif userProblemSolved == 1: 
-				score = 7
+				score = 5
 				userPlagiarismStatus = '-'
 
 			elif userProblemSolved == 2:
-				score = 8
+				score = 6
 				userPlagiarismStatus = '-'
 
 			# Make data in required format
@@ -77,25 +77,25 @@ class ProcessData():
 			if type(enrolment) == type(""):
 				eDigit = int(enrolment[4:])	# Remove 181B
 		except:
-			return "Unknown"
+			return "Unknown-retest"
 
 		if eDigit >= 1 and eDigit <= 32:
-			return 'B1'
+			return 'B1-retest'
 		elif eDigit >= 33 and eDigit <= 64:
-			return 'B2'
+			return 'B2-retest'
 		elif eDigit >= 65 and eDigit <= 96:
-			return 'B3'
+			return 'B3-retest'
 		elif (eDigit >= 193 and eDigit <= 224) or eDigit == 178:
-			return 'B7'
+			return 'B7-retest'
 		elif eDigit >= 226 and eDigit <= 263:
-			return 'B8'
+			return 'B8-retest'
 		elif (eDigit >= 97 and eDigit <= 129) or eDigit == 264 or eDigit == 269:
-			return 'B4'
+			return 'B4-retest'
 		elif (eDigit >= 130 and eDigit <= 160) or eDigit == 270:
-			return 'B5'
+			return 'B5-retest'
 		elif (eDigit >= 161 and eDigit <= 192) or eDigit in [265, 266, 267, 268]:
-			return 'B6'
+			return 'B6-retest'
 		
 
-	def getBatchReport(self, batch = 'B1'):
+	def getBatchReport(self, batch = 'B1-retest'):
 		return self.batchDict.get(batch, [])
