@@ -2,7 +2,7 @@ from openpyxl import Workbook
 
 class PostProcessHandler():
 	def __init__(self, dataHandlerObject):
-		self.batchList = ['B1-retest', 'B2-retest', 'B3-retest', 'B4-retest', 'B5-retest', 'B6-retest', 'B7-retest', 'B8-retest', 'Unknown-retest']
+		self.batchList = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'Unknown']
 		self.dataHandlerObject = dataHandlerObject
 
 		self.makeSheets()
