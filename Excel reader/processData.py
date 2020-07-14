@@ -29,8 +29,18 @@ class ProcessData():
 			userData = self.contestDataObject.getData(user)	
 			userProblemSolved = userData["Problems Solved"]
 			userTabSwitches = userData["Tab Switches"]
+			userContestID = userData["Contest ID"]		# Contest A or B
 			userPlagiarismStatus = self.plagObject.getStatus(user)
 
+			if userContestID == 'A':
+				fullMarks = 8
+				halfMarks = 7
+				noneMarks = 6
+			else:
+				fullMarks = 6
+				halfMarks = 5
+				noneMarks = 4
+			discMarks = 3
 
 			userEnrolment = self.enrolmentObject.getEnrolment(user)
 			# print(userEnrolment)
@@ -43,26 +53,26 @@ class ProcessData():
 
 			# Check user plagiarism status
 			if userPlagiarismStatus == True:
-				score = 3
+				score = discMarks
 				userPlagiarismStatus = 'Disqualified due to Plagiarism'
 				if userTabSwitches > 5:
 					userProblemSolved = 'Also disqualified due to Tab switches'
 
 			elif userTabSwitches > 5:
-				score = 3
+				score = discMarks
 				userProblemSolved = 'Disqualified due to Tab switches'
 				userPlagiarismStatus = '-'
 
 			elif userProblemSolved == 0:
-				score = 6
+				score = noneMarks
 				userPlagiarismStatus = '-'
 
 			elif userProblemSolved == 1: 
-				score = 7
+				score = halfMarks
 				userPlagiarismStatus = '-'
 
 			elif userProblemSolved == 2:
-				score = 8
+				score = fullMarks
 				userPlagiarismStatus = '-'
 
 			# Make data in required format
