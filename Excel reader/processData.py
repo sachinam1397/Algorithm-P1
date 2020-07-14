@@ -65,7 +65,7 @@ class ProcessData():
 				userPlagiarismStatus = '-'
 
 			# Make data in required format
-			data = (userEnrolment, score, userProblemSolved, userPlagiarismStatus)
+			data = (user, userEnrolment, score, userProblemSolved, userPlagiarismStatus)
 
 			# Store data
 			self.batchDict[userBatch].append(data)

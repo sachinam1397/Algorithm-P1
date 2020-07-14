@@ -16,7 +16,7 @@ class PostProcessHandler():
 			workbook = Workbook()
 			activeSheet = workbook.active
 			activeSheet.title = batch + ' Marks'
-			activeSheet.append(('Enrolment', 'Score', 'Problems Solved', 'Plagiarism Status'))
+			activeSheet.append(('Hackerearth Username', 'Enrolment', 'Score', 'Problems Solved', 'Plagiarism Status'))
 
 			for user in batchData:
 				# user : (enrolment, score, problem solved, plag status)
