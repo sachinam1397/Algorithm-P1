@@ -12,9 +12,9 @@ from openpyxl import Workbook
 class PostProcessHandler():
 	def __init__(self, dataHandlerObject):
 		# List of all batches
-		self.batchList = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'Unknown']
+		self.batchList = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8']
 		# This dict holds the batch data as list of tuples(enrolment, score)
-		self.batchDict = {'B1' : [], 'B2' : [], 'B3' : [], 'B4' : [], 'B5' : [], 'B6' : [], 'B7' : [], 'B8' : [], 'Unknown' : []}
+		self.batchDict = {'B1' : [], 'B2' : [], 'B3' : [], 'B4' : [], 'B5' : [], 'B6' : [], 'B7' : [], 'B8' : []}
 		
 		self.dataHandlerObject = dataHandlerObject
 
@@ -32,6 +32,7 @@ class PostProcessHandler():
 			if userData == None:
 				userData = ('<< Unknown >>', enrolmentString, 4, 0, '-')
 
+			print('Adding into batch:', userBatch)
 			self.batchDict[userBatch].append(userData)
 
 
@@ -76,3 +77,5 @@ class PostProcessHandler():
 			return 'B5'
 		elif (eDigit >= 161 and eDigit <= 192) or eDigit in [265, 266, 267, 268]:
 			return 'B6'
+		else: 
+			return 'Unknown'
