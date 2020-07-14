@@ -24,7 +24,7 @@ class PostProcessHandler():
 
 	def makeDict(self):
 		for enrolment in range(1, 271):
-			enrolmentString = "171B" + "{0:0=3d}".format(enrolment)
+			enrolmentString = "181B" + "{0:0=3d}".format(enrolment)
 
 			userData = self.dataHandlerObject.getUserData(enrolmentString)
 			userBatch = self.getBatch(enrolmentString)

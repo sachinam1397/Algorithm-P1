@@ -21,6 +21,7 @@ class ProcessData():
 			userPlagiarismStatus = self.plagObject.getStatus(user)
 
 			userEnrolment = self.enrolmentObject.getEnrolment(user)
+			print('For user', user, ' got enrolment:', userEnrolment)
 			if userEnrolment == None:
 				# Fuck you user :P
 				continue
@@ -66,4 +67,8 @@ class ProcessData():
 
 	def getUserData(self, enrolment):
 		# Expected enrolment as an integer
-		return self.allDict.get(enrolment.lower(), None)
+		print('Request for enrolment:', enrolment, end = '')
+		data = self.allDict.get(enrolment.lower(), None)
+		if data == None:
+			print(' : Did not get any data!')
+		return data
