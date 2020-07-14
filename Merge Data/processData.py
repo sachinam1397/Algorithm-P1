@@ -64,6 +64,6 @@ class ProcessData():
 			data = (user, userEnrolment.lower(), score, userProblemSolved, userPlagiarismStatus)
 			self.allDict[userEnrolment.lower()] = data
 
-	def getUserReport(self, enrolment):
+	def getUserData(self, enrolment):
 		# Expected enrolment as an integer
 		return self.allDict.get(enrolment.lower(), None)
