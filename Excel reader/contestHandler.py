@@ -15,18 +15,17 @@ class ContestHandler():
 			self.temp_dict["Email"] = self.sheet.cell_value(i,1)
 			self.temp_dict["Problems Solved"] = ((int(self.sheet.cell_value(i,11))//4) + (int(self.sheet.cell_value(i,12))//4))
 			self.temp_dict["Tab Switches"] = self.sheet.cell_value(i,7)
+			self.temp_dict["Contest ID"] = self.sheet.cell_value(i, 13)
 
 			username = self.sheet.cell_value(i,9).split('@')
 			username = username[1].lower()
 			# --------------------------------------------------------------------
 			# New changes here:
-			self.contestID = self.sheet.cell_value(i,    x      )
-
-			if self.contestID == 'B':
+			if self.temp_dict["Contest ID"] == 'B':
 				# Overwrite any data for contest A, as contest B has more priority
 				self.user[username] = self.temp_dict
 
-			elif self.contestID == 'A':
+			else:
 				# Check if any record of contest B for this user has already been read:
 				data_ = self.user.get(username, None)
 				# If no previous record is found:
