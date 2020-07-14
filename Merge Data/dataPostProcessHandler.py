@@ -32,7 +32,7 @@ class PostProcessHandler():
 			if userData == None:
 				userData = ('<< Unknown >>', enrolmentString, 4, 0, '-')
 
-			print('Adding into batch:', userBatch)
+			print('Adding', enrolmentString, ' into batch:', userBatch)
 			self.batchDict[userBatch].append(userData)
 
 
