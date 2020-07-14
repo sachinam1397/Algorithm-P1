@@ -51,6 +51,7 @@ class ProcessData():
 			elif userTabSwitches > 5:
 				score = 3
 				userProblemSolved = 'Disqualified due to Tab switches'
+				userPlagiarismStatus = '-'
 
 			elif userProblemSolved == 0:
 				score = 4
