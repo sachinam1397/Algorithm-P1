@@ -14,7 +14,7 @@ class PostProcessHandler():
 		# List of all batches
 		self.batchList = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8']
 		# This dict holds the batch data as list of tuples(enrolment, score)
-		self.batchDict = {'B1' : [], 'B2' : [], 'B3' : [], 'B4' : [], 'B5' : [], 'B6' : [], 'B7' : [], 'B8' : []}
+		self.batchDict = {'B1' : [], 'B2' : [], 'B3' : [], 'B4' : [], 'B5' : [], 'B6' : [], 'B7' : [], 'B8' : [], "Unknown" : []}
 		
 		self.dataHandlerObject = dataHandlerObject
 
