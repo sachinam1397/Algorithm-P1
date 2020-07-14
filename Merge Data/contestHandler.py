@@ -19,19 +19,8 @@ class ContestHandler():
 
 			username = self.sheet.cell_value(i,9).split('@')
 			username = username[1].lower()
-			# --------------------------------------------------------------------
-			# New changes here:
-			if self.temp_dict["Contest ID"] == 'B':
-				# Overwrite any data for contest A, as contest B has more priority
-				self.user[username] = self.temp_dict
 
-			else:
-				# Check if any record of contest B for this user has already been read:
-				data_ = self.user.get(username, None)
-				# If no previous record is found:
-				if data_ == None:
-					# User has not given contest B, so accept this contest data
-					self.user[username] = self.temp_dict
+			self.user[username] = self.temp_dict
 
 
 	def getData(self, username = None):
