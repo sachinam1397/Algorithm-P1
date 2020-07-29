@@ -28,14 +28,14 @@ class ProcessData():
 
 			userContestID = userData.get("Contest ID", 'A')		# Contest A or B
 			if userContestID == 'A':
-				fullMarks = 8
-				halfMarks = 7
-				noneMarks = 6
+				fullMarks = 
+				halfMarks = 
+				noneMarks = 
 			else:
-				fullMarks = 6
-				halfMarks = 5
-				noneMarks = 4
-			discMarks = 3
+				fullMarks = 
+				halfMarks = 
+				noneMarks = 
+			discMarks = 
 
 			# Check user plagiarism status
 			if userPlagiarismStatus == True:
